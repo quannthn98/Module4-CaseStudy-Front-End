@@ -1,5 +1,3 @@
-getProductDetail(12)
-
 function getProductDetail(id) {
     $.ajax({
         url: `http://localhost:8080/products/${id}`,

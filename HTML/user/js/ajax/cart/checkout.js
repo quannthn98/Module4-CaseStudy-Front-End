@@ -17,6 +17,50 @@ function showCartDetail(){
     })
 }
 
+function doCheckout(){
+    let url = `${baseUrl}/orders`
+    let firstName = $("#first-name").val();
+    let lastName = $("#last-name").val();
+    let fullName = firstName + lastName;
+    let address = $("#req-st-address").val();
+    let email = $("#email").val();
+    let phone = $("#phone").val();
+    let paymentMethodId = $("input[name=payment-method]:checked", "#formCheckout").val();
+    let note = $("#order-notes").val();
+    let deliverFirmId = $("#deliverFirm option:selected").val();
+    let newOrder = {
+        fullName: fullName,
+        address: address,
+        email: email,
+        phone: phone,
+        paymentMethod: {
+            id: paymentMethodId
+        },
+        note: note,
+        deliverFirm: {
+            id: deliverFirmId
+        }
+    }
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        headers: {
+            "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg",
+            "Accept": 'application/json',
+            "Content-type": 'application/json'
+        },
+        data: JSON.stringify(newOrder),
+        success: function (data) {
+            console.log(data)
+        }
+    }).fail(function (){
+        console.log('fail')
+    })
+
+
+}
+
 function drawCartDetail(data){
     let content = "";
     let estimatedPayment = 0;

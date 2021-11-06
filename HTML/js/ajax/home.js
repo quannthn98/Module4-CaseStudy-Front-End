@@ -1,4 +1,5 @@
 getAllBrand()
+
 function getAllBrand() {
     $.ajax({
         url: `http://localhost:8080/brands`,
@@ -6,7 +7,7 @@ function getAllBrand() {
         success: function (brand) {
             let content = ''
             for (let i = 0; i < brand.content.length; i++) {
-                    content += getBrand(brand.content[i])
+                content += getBrand(brand.content[i])
             }
             $("#brand").html(content)
         }
@@ -15,8 +16,22 @@ function getAllBrand() {
 
 function getBrand(brand) {
     $.ajax({
-        url: `http://localhost:8080/categories`,
+        url: `http://localhost:8080/brands`,
         type: 'GET',
+        success: function () {
+            $.ajax({
+                url: `http://localhost:8080/categories`,
+                type: 'GET',
+                success: function (categories) {
+                    let content = ''
+                    for (let i = 0; i < categories.content.length; i++) {
+                        content += getBrand(categories.content[i])
+                    }
+
+                }
+            })
+            $("#brand").html(content)
+        }
     })
     return `<li class="js-backdrop">
                 <a href="shop-v1-root-category.html">
@@ -29,8 +44,8 @@ function getBrand(brand) {
                     <div class="row">
                         <div class="col-lg-4">
                             <ul class="v-level-2">
-                                <li>
-                                    <a href="shop-v2-sub-category.html">RC Toys & Hobbies
+                                <li id="category">
+                                    <a href="shop-v2-sub-category.html">Solar Energy
                                     </a>
                                     <ul>
                                         <li>
@@ -82,19 +97,20 @@ function getBrand(brand) {
                                 <li>
                                     <a href="shop-v2-sub-category.html">Solar Energy
                                     </a>
-                                    <ul>
-                                        <li>
-                                            <a href="shop-v3-sub-sub-category.html">Solar Powered Toy
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-v3-sub-sub-category.html">Solar Powered System
-                                            </a>
-                                        </li>
-                                        <li class="view-more-flag">
-                                            <a href="store-directory.html">View More
-                                            </a>
-                                        </li>
+                                    <ul id="productByCategory">
+                                        ${getProductByCategory(1)}
+<!--                                        <li>-->
+<!--                                            <a href="shop-v3-sub-sub-category.html">Solar Powered Toy-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--                                        <li>-->
+<!--                                            <a href="shop-v3-sub-sub-category.html">Solar Powered System-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--                                        <li class="view-more-flag">-->
+<!--                                            <a href="store-directory.html">View More-->
+<!--                                            </a>-->
+<!--                                        </li>-->
                                     </ul>
                                 </li>
                             </ul>
@@ -108,4 +124,35 @@ function getBrand(brand) {
                     </div>
                 </div>
             </li>`
+}
+
+function getProductByCategory(id) {
+    $.ajax({
+        url: `http://localhost:8080/${id}/products`,
+        type: 'GET',
+        success: function (product) {
+            let content = ''
+            for (let i = 0; i < product.content.length; i++) {
+                content += `<li>
+                                <a href="shop-v3-sub-sub-category.html">Solar Powered Toy</a>
+                            </li>`
+            }
+            $("#productByCategory").html(content)
+        }
+    })
+}
+
+function drawCategories() {
+    $.ajax({
+        url: `http://localhost:8080/categories`,
+        type: 'GET',
+        success: function (category) {
+            let content = ''
+            for (let i = 0; i < category.length; i++) {
+                content += `<a href="shop-v2-sub-category.html">${category[i].name}
+                                    </a>`
+            }
+            $("#category").html(content)
+        }
+    })
 }

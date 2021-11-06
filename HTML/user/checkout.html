@@ -32,9 +32,11 @@
     <link rel="stylesheet" href="css/utility.css">
     <!-- Main -->
     <link rel="stylesheet" href="css/bundle.css">
+
+    <script src="js/ajax/cart/checkout.js"></script>
 </head>
 
-<body>
+<body onload="showCartDetail()">
 
 <!-- app -->
 <div id="app">
@@ -1020,49 +1022,13 @@
                                 <h4 class="section-h4">Your Order</h4>
                                 <div class="order-table">
                                     <table class="u-s-m-b-13">
-                                        <thead>
+                                        <thead onload="showCartDetail()">
                                             <tr>
                                                 <th>Product</th>
                                                 <th>Total</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="order-h6">Casual Hoodie Full Cotton</h6>
-                                                    <span class="order-span-quantity">x 1</span>
-                                                </td>
-                                                <td>
-                                                    <h6 class="order-h6">$55.00</h6>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="order-h6">Black Rock Dress with High Jewelery Necklace</h6>
-                                                    <span class="order-span-quantity">x 1</span>
-                                                </td>
-                                                <td>
-                                                    <h6 class="order-h6">$55.00</h6>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="order-h6">Xiaomi Note 2 Black Color</h6>
-                                                    <span class="order-span-quantity">x 1</span>
-                                                </td>
-                                                <td>
-                                                    <h6 class="order-h6">$55.00</h6>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="order-h6">Dell Inspiron 15</h6>
-                                                    <span class="order-span-quantity">x 1</span>
-                                                </td>
-                                                <td>
-                                                    <h6 class="order-h6">$55.00</h6>
-                                                </td>
-                                            </tr>
+                                        <tbody id="cart">
                                             <tr>
                                                 <td>
                                                     <h3 class="order-h3">Subtotal</h3>
@@ -1103,11 +1069,7 @@
                                     </div>
                                     <div class="u-s-m-b-13">
                                         <input type="radio" class="radio-box" name="payment-method" id="credit-card-stripe">
-                                        <label class="label-text" for="credit-card-stripe">Credit Card (Stripe)</label>
-                                    </div>
-                                    <div class="u-s-m-b-13">
-                                        <input type="radio" class="radio-box" name="payment-method" id="paypal">
-                                        <label class="label-text" for="paypal">Paypal</label>
+                                        <label class="label-text" for="credit-card-stripe">Dogecoin</label>
                                     </div>
                                     <div class="u-s-m-b-13">
                                         <input type="checkbox" class="check-box" id="accept">

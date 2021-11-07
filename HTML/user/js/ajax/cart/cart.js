@@ -1,6 +1,14 @@
 let baseUrl = "http://localhost:8080"
 
+// function checkJwt(){
+//     let jwt = localStorage.token;
+//     if (jwt == null){
+//         return window.location.href = "account.html"
+//     }
+// }
+
 function showCart() {
+    // checkJwt();
     $.ajax({
         type: "GET",
         url: `${baseUrl}/users/cart`,
@@ -28,6 +36,7 @@ function showCart() {
 }
 
 function addToCart(productId, quantity){
+    // checkJwt()
     let cartDetail = {
         product: {
             id: productId,
@@ -58,6 +67,7 @@ function addToCart(productId, quantity){
 }
 
 function updateQuantity(action, id) {
+    // checkJwt()
     let url = `${baseUrl}/carts/${id}`
     switch (action) {
         case "+":
@@ -88,12 +98,13 @@ function updateQuantity(action, id) {
 }
 
 function removeCart(id) {
+    // checkJwt()
     let url = `${baseUrl}/carts/${id}`
     $.ajax({
         url: url,
         type: 'DELETE',
         headers: {
-            "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg"
+            "Authorization": "Bearer " + localStorage.token
         },
         success: function () {
             showCart()

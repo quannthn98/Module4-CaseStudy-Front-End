@@ -32,14 +32,35 @@
     <link rel="stylesheet" href="css/utility.css">
     <!-- Main -->
     <link rel="stylesheet" href="css/bundle.css">
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+    <style>
+        label.error{
+            color: red;
+            font-size: small;
+        }
+        .error{
+            color: red;
+            font-size: small;
+        }
+        #username-duplicated {
+            color: red;
+            font-size: small;
+        }
+        #username-useable {
+            color: limegreen;
+            font-size: small;
+        }
+    </style>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="js/ajax/user/validation.js"></script>
     <script src="js/ajax/user/user.js"></script>
-<!--validate-->
+
+    <script src="js/ajax/user/validation.js"></script>
+    <script src="js/ajax/cart/eventListener.js"></script>
+    <!--validate-->
 
 </head>
 
@@ -903,25 +924,28 @@
                     <div class="reg-wrapper">
                         <h2 class="account-h2 u-s-m-b-20">Register</h2>
                         <h6 class="account-h6 u-s-m-b-30">Registering for this site allows you to access your order status and history.</h6>
-                        <form id="register-form">
+                        <form id="register-form" name="register-form">
                             <div class="u-s-m-b-30">
                                 <label for="username">Username
                                     <span class="astk">*</span>
+                                    <span class="astk" id="username-duplicated"></span>
+                                    <span class="astk" id="username-useable"></span>
                                 </label>
                                 <input type="text" id="username" name="username" class="text-field" placeholder="Username">
-                                <label id="username-error" class="error" for="username"></label>
+<!--                                <label id="username-duplicated" class="duplicated" for="username"></label>-->
+<!--                                <label id="username-useable" class="success" for="username"></label>-->
                             </div>
                             <div class="u-s-m-b-30">
                                 <label for="email">Email
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" id="email" name="email" class="text-field" placeholder="Email">
+                                <input required type="text" id="email" name="email" class="text-field" placeholder="Email">
                             </div>
                             <div class="u-s-m-b-30">
                                 <label for="password">Password
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" id="password" name="password" class="text-field" placeholder="Password">
+                                <input required type="text" id="password" name="password" class="text-field" placeholder="Password">
                             </div>
                             <div class="u-s-m-b-30">
                                 <label for="fullName">Full Name
@@ -957,8 +981,8 @@
                                     <a href="terms-and-conditions.html" class="u-c-brand">terms & conditions</a>
                                 </label>
                             </div>
-                            <div class="u-s-m-b-45">
-                                <button type="button" id="register-button" class="button button-primary w-100">Register</button>
+                            <div id="register-button-wrapper" class="u-s-m-b-45">
+                                <button disabled style="background-color: gray" type="button" id="register-button" class="button button-primary w-100">Register</button>
                             </div>
                         </form>
                     </div>
@@ -1184,8 +1208,6 @@ ga('send', 'pageview')
 <script type="text/javascript" src="js/vendor/modernizr-custom.min.js"></script>
 <!-- NProgress -->
 <script type="text/javascript" src="js/nprogress.min.js"></script>
-<!-- jQuery -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
 <!-- Bootstrap JS -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- Popper -->

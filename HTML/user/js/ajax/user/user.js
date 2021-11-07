@@ -32,7 +32,6 @@ function login(){
 }
 
 
-
 function register(){
     let username = $("#username").val();
     let password = $("#password").val();
@@ -80,9 +79,3 @@ function register(){
         })
     })
 }
-
-$(document).ready(function (){
-    $("#register-button").on('click', function (){
-        register();
-    })
-})

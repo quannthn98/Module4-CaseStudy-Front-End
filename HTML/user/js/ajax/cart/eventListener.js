@@ -11,4 +11,9 @@ $(document).ready(function (){
         login();
     })
 })
+$(document).ready(function (){
+    $("#register-button").on('click', function (){
+        register();
+    })
+})
 

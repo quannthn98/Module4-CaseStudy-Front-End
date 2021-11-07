@@ -25,6 +25,7 @@ function doCheckout(){
     let address = $("#req-st-address").val();
     let email = $("#email").val();
     let phone = $("#phone").val();
+    let date = new Date();
     let paymentMethodId = $("input[name=payment-method]:checked", "#formCheckout").val();
     let note = $("#order-notes").val();
     let deliverFirmId = $("#deliverFirm option:selected").val();
@@ -33,6 +34,7 @@ function doCheckout(){
         address: address,
         email: email,
         phone: phone,
+        dateCreated: date,
         paymentMethod: {
             id: paymentMethodId
         },

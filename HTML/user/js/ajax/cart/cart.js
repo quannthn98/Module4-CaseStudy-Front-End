@@ -10,7 +10,7 @@ function showCart() {
         success: function (data) {
             if (data.length == 0) {
                 swal({
-                    title: 'Empyt Cart',
+                    title: 'Empty Cart',
                     text: 'You dont have any products in cart',
                     icon: 'info'
 
@@ -96,10 +96,10 @@ function removeCart(id) {
             "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg"
         },
         success: function () {
-            drawCart()
+            showCart()
         }
     }).fail(function () {
-        consoler.log("fail")
+        console.log("fail")
     })
 }
 
@@ -137,8 +137,8 @@ function drawCart(data) {
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="action-wrapper">
-                                            <button onclick="removeCart(${element.id})" class="button button-outline-secondary fas fa-trash"></button>
+                                        <div >
+                                            <button type="button" onclick="removeCart(${element.id})" class="button button-outline-secondary fas fa-trash"></button>
                                         </div>
                                     </td>
                                 </tr>

@@ -1,19 +1,48 @@
-let baseUrl = "http://localhost:8080"
 
-// function checkJwt(){
-//     let jwt = localStorage.token;
-//     if (jwt == null){
-//         return window.location.href = "account.html"
-//     }
-// }
+function checkJwt() {
+    let jwt = localStorage.token;
+    if (jwt == null) {
+        swal({
+            title: "Error",
+            text: "Please login to see you cart",
+            icon: "error",
+            button: "To login page"
+        }).then((value) => {
+            window.location.href = "account.html"
+        })
+    }
+}
+
+function showSideBarCart() {
+    let jwt = localStorage.token;
+    if (jwt == null){
+        $("#total-product-in-cart").html("0");
+        $("#mini-cart-trigger-payment").html("0");
+        $("#mini-cart-list").html("Please login to see your cart");
+        $("#mini-cart-list-payment").html("0");
+    } else {
+        $.ajax({
+            type: "GET",
+            url: `${baseUrl}/users/cart`,
+            headers: {
+                "Authorization": "Bearer " + jwt
+            },
+            success: function (data){
+                drawSidebarCart(data)
+            }
+        })
+    }
+
+}
 
 function showCart() {
-    // checkJwt();
+    checkJwt();
+    showSideBarCart()
     $.ajax({
         type: "GET",
         url: `${baseUrl}/users/cart`,
         headers: {
-            "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg"
+            "Authorization": "Bearer " + localStorage.token
         },
         success: function (data) {
             if (data.length == 0) {
@@ -21,7 +50,6 @@ function showCart() {
                     title: 'Empty Cart',
                     text: 'You dont have any products in cart',
                     icon: 'info'
-
                 })
                 drawCart(data)
                 var message = "<tr><td>You don't have any products in cart</td></tr>"
@@ -30,13 +58,13 @@ function showCart() {
                 drawCart(data);
             }
         }
-    }).fail(function (){
-        window.location.href= "404.html"
+    }).fail(function () {
+        console.log('fail')
     })
 }
 
-function addToCart(productId, quantity){
-    // checkJwt()
+function addToCart(productId, quantity) {
+    checkJwt()
     let cartDetail = {
         product: {
             id: productId,
@@ -50,13 +78,13 @@ function addToCart(productId, quantity){
         headers: {
             'Accept': 'application/json',
             'Content-type': 'application/json',
-            "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg"
+            "Authorization": "Bearer " + localStorage.token
         },
         data: JSON.stringify(cartDetail),
-        success: function (data){
+        success: function (data) {
             showCart();
         }
-    }).fail(function (){
+    }).fail(function () {
         swal({
             title: "Add product fail",
             text: "Not enough product in ware house",
@@ -67,7 +95,7 @@ function addToCart(productId, quantity){
 }
 
 function updateQuantity(action, id) {
-    // checkJwt()
+    checkJwt()
     let url = `${baseUrl}/carts/${id}`
     switch (action) {
         case "+":
@@ -81,11 +109,9 @@ function updateQuantity(action, id) {
         url: url,
         type: "PUT",
         headers: {
-            "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg"
+            "Authorization": "Bearer " + localStorage.token
         },
         success: function (data) {
-
-            console.log(data)
             showCart();
         }
     }).fail(function () {
@@ -98,7 +124,7 @@ function updateQuantity(action, id) {
 }
 
 function removeCart(id) {
-    // checkJwt()
+    checkJwt()
     let url = `${baseUrl}/carts/${id}`
     $.ajax({
         url: url,
@@ -120,7 +146,7 @@ function drawCart(data) {
     for (let i = 0; i < data.length; i++) {
         var element = data[i]
         var product = element.product
-        var price = product.price*(1 - product.saleOff/100);
+        var price = product.price * (1 - product.saleOff / 100);
         estimatePayment += price * element.quantity;
 
         content += `                                
@@ -159,4 +185,29 @@ function drawCart(data) {
     $("#estimatePayment").html("$" + estimatePayment);
     $("#totalPayment").html("$" + estimatePayment);
     $("#cart").html(content)
+}
+
+function drawSidebarCart(data) {
+    let content = "";
+    let estimatPayment = 0;
+
+    for (let i = 0; i < data.length; i++) {
+        var element = data[i];
+        var product = element.product;
+        var price = product.price * (1 - product.saleOff / 100);
+        estimatPayment += price * element.quantity;
+        content +=
+                `    <li class="clearfix">
+                        <a href="single-product.html">
+                            <img src="images/product/product@1x.jpg" alt="Product">
+                            <span class="mini-item-name">${product.name}</span>
+                            <span class="mini-item-price">${price}</span>
+                            <span class="mini-item-quantity"> x ${element.quantity}</span>
+                        </a>
+                    </li>   `
+    }
+    $("#total-product-in-cart").html(data.length);
+    $("#mini-cart-trigger-payment").html(estimatPayment);
+    $("#mini-cart-list").html(content);
+    $("#mini-cart-list-payment").html(estimatPayment);
 }

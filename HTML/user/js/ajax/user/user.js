@@ -1,6 +1,6 @@
 let baseUrl = "http://localhost:8080"
 
-function login(){
+function login() {
     let username = $("#user-name-email").val();
     let password = $("#login-password").val();
     let user = {
@@ -16,13 +16,13 @@ function login(){
             'Accept': 'application/json',
             'Content-type': 'application/json'
         },
-        success: function (data){
+        success: function (data) {
             console.log(data);
             localStorage.setItem('token', data.token);
             localStorage.setItem('username', data.username);
         },
         async: false
-    }).fail(function (){
+    }).fail(function () {
         swal({
             title: "Login error",
             text: "Username or password is incorrect",
@@ -32,7 +32,7 @@ function login(){
 }
 
 
-function register(){
+function register() {
     let username = $("#username").val();
     let password = $("#password").val();
     let email = $("#email").val()
@@ -72,10 +72,16 @@ function register(){
             })
             console.log(data)
         }
-    }).fail(function (){
+    }).fail(function () {
         swal({
             title: "Register failed",
             text: "Username"
         })
     })
+}
+
+function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    window.location.href = "account.html"
 }

@@ -1,4 +1,3 @@
-let baseUrl = "http://localhost:8080"
 
 function showCartDetail(){
     let url = `${baseUrl}/users/cart`
@@ -6,7 +5,7 @@ function showCartDetail(){
         type: "GET",
         url: url,
         headers: {
-            "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg"
+            "Authorization": "Bearer " + localStorage.token
         },
         success: function (data){
             console.log(data)
@@ -48,7 +47,7 @@ function doCheckout(){
         url: url,
         type: "POST",
         headers: {
-            "Authorization": "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdWFueWI5ODEiLCJpYXQiOjE2MzYxNjU5ODQsImV4cCI6ODgwMzYxNjU5ODR9.dtTA4i_YP2P-cCWenHQsS-EWlRvogsKWcdV4BCIvLLAHKrrANwrMb2dEWk06q5RLjBsXhKKMDmBzJX_8K0GPCg",
+            "Authorization": "Bearer " + localStorage.token,
             "Accept": 'application/json',
             "Content-type": 'application/json'
         },

@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search);
+const product = urlParams.get('product');
+getProductDetail(product)
 function getProductDetail(id) {
     $.ajax({
         url: `http://localhost:8080/products/${id}`,

@@ -29,7 +29,7 @@ function getModalProduct(product) {
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <!-- Product-zoom-area -->
                             <div class="zoom-area">
-                                <img id="zoom-pro-quick-view" class="img-fluid" src="images/product/product@4x.jpg" data-zoom-image="images/product/product@4x.jpg" alt="Zoom Image">
+                                <img id="zoom-pro-quick-view" class="img-fluid" src="http://localhost:8080/${product.mainImage}" data-zoom-image="images/product/product@4x.jpg" alt="Zoom Image">
                                 <div id="gallery-quick-view" class="u-s-m-t-10">
                                     <a class="active" data-image="images/product/product@4x.jpg" data-zoom-image="images/product/product@4x.jpg">
                                         <img src="images/product/product@2x.jpg" alt="Product">

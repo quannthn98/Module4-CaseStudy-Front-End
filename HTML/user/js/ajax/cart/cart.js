@@ -205,15 +205,15 @@ function drawSidebarCart(data) {
         content +=
                 `    <li class="clearfix">
                         <a href="single-product.html">
-                            <img src="images/product/product@1x.jpg" alt="Product">
+                            <img src="${product.mainImage}" alt="Product">
                             <span class="mini-item-name">${product.name}</span>
                             <span class="mini-item-price">${price}</span>
                             <span class="mini-item-quantity"> x ${element.quantity}</span>
                         </a>
-                    </li>   `
+                    </li>`
     }
     $(".item-counter").text(data.length);
     $(".item-price").text(estimatePayment);
-    $(".mini-cart-list").text(content);
+    $(".mini-cart-list").html(content);
     $(".mini-total-price").text(estimatePayment);
 }

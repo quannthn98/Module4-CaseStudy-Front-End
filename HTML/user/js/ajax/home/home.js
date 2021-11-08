@@ -9,7 +9,7 @@ function getAllCategories() {
             for (let i = 0; i < category.content.length; i++) {
                 content += getCategory(category.content[i])
             }
-            $("#categories").html(content)
+            $(".v-list").html(content)
         }
     })
 }

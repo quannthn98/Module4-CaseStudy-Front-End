@@ -5,6 +5,7 @@ let username = localStorage.username
 function init(){
     checkLoginStatus();
     showSideBarCart();
+    getAllCategories();
 }
 
 function checkLoginStatus(){

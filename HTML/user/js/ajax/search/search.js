@@ -5,8 +5,6 @@ $(document).ready(function () {
 })
 let totalSize;
 
-
-
 function getAll() {
     $.ajax({
         url: `http://localhost:8080/products?q=${search}`,
@@ -18,7 +16,7 @@ function getAll() {
                 content += getProduct(product.content[i])
             }
             totalSize = product.totalElements
-            $("#sizeProduct").html('WE FOUND '+ totalSize +' RESULTS FOR : '+'<i id="param"></i>')
+            $("#sizeProduct").html('WE FOUND ' + totalSize + ' RESULTS FOR : ' + '<i id="param"></i>')
             $("#param").html(`" ` + search + ` "`)
             $(".list-style").html(content)
         }
@@ -68,7 +66,7 @@ function getProduct(product) {
                                     </div>
                                     <div class="price-template">
                                         <div class="item-new-price">
-                                            ${product.price*(1-product.saleOff/100)}
+                                            ${product.price * (1 - product.saleOff / 100)}
                                         </div>
                                         <div class="item-old-price">
                                             $${product.price}

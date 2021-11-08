@@ -14,12 +14,19 @@ function checkJwt() {
 }
 
 function showSideBarCart() {
-    let jwt = localStorage.token;
+    var jwt = localStorage.token;
     if (jwt == null){
-        $("#total-product-in-cart").html("0");
-        $("#mini-cart-trigger-payment").html("0");
-        $("#mini-cart-list").html("Please login to see your cart");
-        $("#mini-cart-list-payment").html("0");
+        // let content =
+        //     `
+        //     <i class="ion ion-md-basket"></i>
+        //                                 <span id="total-product-in-cart" class="item-counter">0</span>
+        //                                 <span id="mini-cart-trigger-payment" class="item-price">$0</span>
+        //     `
+        // $("#mini-cart-trigger").html(content)
+        $(".item-counter").text("0");
+        $(".item-price").text("0");
+        $(".mini-cart-list").text("Please login to see your cart");
+        $(".mini-total-price").text("0");
     } else {
         $.ajax({
             type: "GET",
@@ -32,7 +39,6 @@ function showSideBarCart() {
             }
         })
     }
-
 }
 
 function showCart() {
@@ -189,13 +195,13 @@ function drawCart(data) {
 
 function drawSidebarCart(data) {
     let content = "";
-    let estimatPayment = 0;
+    let estimatePayment = 0;
 
     for (let i = 0; i < data.length; i++) {
         var element = data[i];
         var product = element.product;
         var price = product.price * (1 - product.saleOff / 100);
-        estimatPayment += price * element.quantity;
+        estimatePayment += price * element.quantity;
         content +=
                 `    <li class="clearfix">
                         <a href="single-product.html">
@@ -206,8 +212,8 @@ function drawSidebarCart(data) {
                         </a>
                     </li>   `
     }
-    $("#total-product-in-cart").html(data.length);
-    $("#mini-cart-trigger-payment").html(estimatPayment);
-    $("#mini-cart-list").html(content);
-    $("#mini-cart-list-payment").html(estimatPayment);
+    $(".item-counter").text(data.length);
+    $(".item-price").text(estimatePayment);
+    $(".mini-cart-list").text(content);
+    $(".mini-total-price").text(estimatePayment);
 }

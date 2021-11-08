@@ -1,4 +1,3 @@
-let baseUrl = "http://localhost:8080"
 
 function login() {
     let username = $("#user-name-email").val();

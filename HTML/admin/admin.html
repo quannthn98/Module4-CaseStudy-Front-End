@@ -174,7 +174,7 @@
             <div class="input-group" data-widget="sidebar-search">
                 <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
-                    <button class="btn btn-sidebar">
+                    <button class="btn btn-sidebar" id="click">
                         <i class="fas fa-search fa-fw"></i>
                     </button>
                 </div>
@@ -254,10 +254,10 @@
 
         <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <input type="text" name="table_search" class="form-control float-right" placeholder="Search" id="search">
 
                 <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
+                    <button type="submit" class="btn btn-default" onclick="searchByNameabc()">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -382,6 +382,9 @@
                                     <label for="name" class="form-label">Name:</label>
                                     <input type="text" class="form-control" name="name" id="name">
                                 </div>
+
+                                    <input type="text" class="form-control" name="id" id="id" hidden>
+
                                 <div class="mb-3">
                                     <label for="quantity" class="form-label">Quantity</label>
                                     <input type="text" class="form-control" name="quantity" id="quantity">

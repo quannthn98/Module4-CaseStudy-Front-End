@@ -211,11 +211,11 @@
       className = className.baseVal;
     }
 
-    // Change `no-js` to `js` (independently of the `enableClasses` option)
+    // Change `no-adminJs` to `adminJs` (independently of the `enableClasses` option)
     // Handle classPrefix on this too
     if (Modernizr._config.enableJSClass) {
-      var reJS = new RegExp('(^|\\s)' + classPrefix + 'no-js(\\s|$)');
-      className = className.replace(reJS, '$1' + classPrefix + 'js$2');
+      var reJS = new RegExp('(^|\\s)' + classPrefix + 'no-adminJs(\\s|$)');
+      className = className.replace(reJS, '$1' + classPrefix + 'adminJs$2');
     }
 
     if (Modernizr._config.enableClasses) {
@@ -235,7 +235,7 @@
   // Run each test
   testRunner();
 
-  // Remove the "no-js" class if it exists
+  // Remove the "no-adminJs" class if it exists
   setClasses(classes);
 
   delete ModernizrProto.addTest;

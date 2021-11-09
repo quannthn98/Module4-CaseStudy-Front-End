@@ -267,4 +267,4 @@ $(function () {
   // })
 })
 
-// lgtm [js/unused-local-variable]
+// lgtm [adminJs/unused-local-variable]

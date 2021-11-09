@@ -63,20 +63,20 @@
     const flushMegaMenusFromPortraitMode =  function () {
         // Set all opened mega menus to `display:none.`
         $allRightDropDowns.css('display', '');
-        // Remove `js-icon-changed` class from buttons.
-        $allIconButtons.removeClass('js-icon-changed');
+        // Remove `adminJs-icon-changed` class from buttons.
+        $allIconButtons.removeClass('adminJs-icon-changed');
     };
     /**
      * Mega Menu behavior on portrait mode
      */
     const portraitMegaMenuFunctionality = function () {
         $allIconButtons.on('click',function () {
-            // Set all `js-icon-changed` menus to `display:none`
+            // Set all `adminJs-icon-changed` menus to `display:none`
             // except current click
             $allRightDropDowns.not($(this).next()).stop(true, true).slideUp();
-            // Remove `js-icon-changed` class from all buttons except current
+            // Remove `adminJs-icon-changed` class from all buttons except current
             // click
-            $allIconButtons.not($(this)).removeClass('js-icon-changed');
+            $allIconButtons.not($(this)).removeClass('adminJs-icon-changed');
             // add class to current click button
             $(this).toggleClass('js-icon-changed');
             // Toggle current right menu

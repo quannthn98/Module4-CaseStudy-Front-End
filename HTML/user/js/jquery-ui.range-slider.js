@@ -1,6 +1,6 @@
 /*! jQuery UI - v1.12.1 - 2018-04-25
 * http://jqueryui.com
-* Includes: widget.js, keycode.js, widgets/mouse.js, widgets/slider.js
+* Includes: widget.adminJs, keycode.adminJs, widgets/mouse.adminJs, widgets/slider.adminJs
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
 
 (function( factory ) {

@@ -15,7 +15,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE CardRefresh.js
+   * AdminLTE CardRefresh.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -182,7 +182,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE CardWidget.js
+   * AdminLTE CardWidget.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -408,7 +408,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE ControlSidebar.js
+   * AdminLTE ControlSidebar.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -713,7 +713,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE DirectChat.js
+   * AdminLTE DirectChat.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -792,7 +792,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE Dropdown.js
+   * AdminLTE Dropdown.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -932,7 +932,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE ExpandableTable.js
+   * AdminLTE ExpandableTable.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -1045,7 +1045,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE Fullscreen.js
+   * AdminLTE Fullscreen.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -1163,7 +1163,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE IFrame.js
+   * AdminLTE IFrame.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -1658,7 +1658,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE Layout.js
+   * AdminLTE Layout.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -1910,7 +1910,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE PushMenu.js
+   * AdminLTE PushMenu.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -2136,7 +2136,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE SidebarSearch.js
+   * AdminLTE SidebarSearch.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -2432,7 +2432,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE NavbarSearch.js
+   * AdminLTE NavbarSearch.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -2540,7 +2540,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE Toasts.js
+   * AdminLTE Toasts.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -2742,7 +2742,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE TodoList.js
+   * AdminLTE TodoList.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -2856,7 +2856,7 @@
 
   /**
    * --------------------------------------------
-   * AdminLTE Treeview.js
+   * AdminLTE Treeview.adminJs
    * License MIT
    * --------------------------------------------
    */
@@ -3046,4 +3046,4 @@
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=adminlte.js.map
+//# sourceMappingURL=adminlte.adminJs.map

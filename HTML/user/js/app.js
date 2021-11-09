@@ -74,7 +74,7 @@ $(function () {
     let $backDrop;
     let $searchFormWrapper;
     let $searchFormElement;
-    let $allListItemsForHover = $('.js-backdrop');
+    let $allListItemsForHover = $('.adminJs-backdrop');
     // ------------------------Back Drop Arena End ---------------------------
     // Object Settings
     let settings = {
@@ -164,14 +164,14 @@ $(function () {
     };
 
     /**
-     * Hover on list items that have class `js-backdrop`
+     * Hover on list items that have class `adminJs-backdrop`
      */
     const hoverOnListItems = function () {
         $allListItemsForHover.on('mouseenter', MouseEnterFunctionForMegaMenu);
         $allListItemsForHover.on('mouseleave', MouseLeaveFunctionForMegaMenu);
     };
     /**
-     * Hoveroff on list items that have class `js-backdrop`
+     * Hoveroff on list items that have class `adminJs-backdrop`
      */
     const hoverOffListItems = function () {
         $allListItemsForHover.off('mouseenter');
@@ -207,7 +207,7 @@ $(function () {
                         removeBackDrop($backDrop);
                     });
                     // First Time invocation
-                    // HoverOn list items that have class `js-backdrop`
+                    // HoverOn list items that have class `adminJs-backdrop`
                     hoverOnListItems();
                     // Flag is set to true
                     listItembackDropFlag = true;
@@ -225,7 +225,7 @@ $(function () {
 
     };
     /**
-     * Manually Restart Pace-js when we change any tab.
+     * Manually Restart Pace-adminJs when we change any tab.
      */
     const manuallyRestartProgress = function () {
         // Specificity = 2
@@ -325,7 +325,7 @@ $(function () {
         attachClickOnMiniCart();
         // Attach Click Event on VMenu
         attachClickOnVMenu();
-       // Manually Restart Pace-js when we change any tab
+       // Manually Restart Pace-adminJs when we change any tab
         manuallyRestartProgress();
         // Attach Click Event on Quantity buttons
         attachClickQuantityButton();

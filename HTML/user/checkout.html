@@ -33,12 +33,15 @@
     <!-- Main -->
     <link rel="stylesheet" href="css/bundle.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/ajax/pageSetup/pageSetup.js"></script>
 
     <script src="js/ajax/cart/checkout.js"></script>
     <script src="js/ajax/cart/eventListener.js"></script>
+    <script src="js/ajax/cart/cart.js"></script>
+    <script src="js/ajax/home/home.js"></script>
 </head>
 
-<body onload="showCartDetail()">
+<body onload="showCartDetail(), init()">
 
 <!-- app -->
 <div id="app">
@@ -1006,7 +1009,7 @@
                                                 <th>Total</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="cart">
+                                        <tbody onload="showCartDetail()" id="cart">
                                             <tr>
                                                 <td>
                                                     <h3 class="order-h3">Subtotal</h3>

@@ -1,5 +1,6 @@
 
 function showCartDetail(){
+    checkJwt()
     let url = `${baseUrl}/users/cart`
     $.ajax({
         type: "GET",
@@ -77,7 +78,7 @@ function drawCartDetail(data){
                                                     <span class="order-span-quantity">x 1</span>
                                                 </td>
                                                 <td>
-                                                    <h6 class="order-h6">${price}</h6>
+                                                    <h6 class="order-h6">$${price}</h6>
                                                 </td>
                                             </tr>`
     }

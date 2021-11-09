@@ -1,11 +1,13 @@
-const urlParams = new URLSearchParams(window.location.search);
-const search = urlParams.get('q');
+var urlParams = new URLSearchParams(window.location.search);
+var search = urlParams.get('q');
 $(document).ready(function () {
-    getAll()
+    getAll();
 })
-let totalSize;
+let totalElement;
 
-
+// $(document).ready(function (){
+//     $("#btn-search").on('click', window.location.href = 'shop-v6-search-results.html')
+// })
 
 function getAll() {
     $.ajax({
@@ -17,8 +19,8 @@ function getAll() {
             for (let i = 0; i < product.content.length; i++) {
                 content += getProduct(product.content[i])
             }
-            totalSize = product.totalElements
-            $("#sizeProduct").html('WE FOUND '+ totalSize +' RESULTS FOR : '+'<i id="param"></i>')
+            totalElement = product.totalElements
+            $("#sizeProduct").html('WE FOUND '+ totalElement +' RESULTS FOR : '+'<i id="param"></i>')
             $("#param").html(`" ` + search + ` "`)
             $(".list-style").html(content)
         }

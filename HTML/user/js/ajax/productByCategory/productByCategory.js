@@ -1,5 +1,5 @@
-const urlParams = new URLSearchParams(window.location.search);
-const cate = urlParams.get('cate');
+var  urlParamsCategory = new URLSearchParams(window.location.search);
+var cate = urlParamsCategory.get('cate');
 let currentCate;
 getAllProductByCategory(cate)
 showAllCategories()
@@ -219,7 +219,7 @@ function getProduct(product) {
                                         <a class="item-quick-look" data-toggle="modal" href="#quick-view">0Quick Look</a>
                                         <a class="item-mail" href="javascript:void(0)">Mail</a>
                                         <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                        <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                        <a class="item-addCart" onclick="addToCart(${product.id}, 1)" href="javascript:void(0)">Add to Cart</a>
                                     </div>
                                 </div>
                                 <div class="item-content">

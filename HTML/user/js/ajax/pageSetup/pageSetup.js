@@ -1,11 +1,12 @@
 let baseUrl = "http://localhost:8080"
 let jwt = localStorage.token
 let username = localStorage.username
-
+// init()
 function init(){
     checkLoginStatus();
     showSideBarCart();
     getAllCategories();
+    $("#btn-search").html('<button id="btn-search" type="submit" class="button button-primary fas fa-search" onclick="window.location.href=\'shop-v6-search-results.html\'">\n')
 }
 
 function checkLoginStatus(){

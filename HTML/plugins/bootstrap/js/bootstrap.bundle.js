@@ -55,7 +55,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.6.0): util.js
+   * Bootstrap (v4.6.0): util.adminJs
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2729,7 +2729,7 @@
    * @memberof Popper.modifiers
    * @param {HTMLElement} reference - The reference element used to position the popper
    * @param {HTMLElement} popper - The HTML element used as popper
-   * @param {Object} options - Popper.js options
+   * @param {Object} options - Popper.adminJs options
    */
   function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
     // compute reference element offsets
@@ -2812,13 +2812,13 @@
         y = options.y;
     var popper = data.offsets.popper;
 
-    // Remove this legacy support in Popper.js v2
+    // Remove this legacy support in Popper.adminJs v2
 
     var legacyGpuAccelerationOption = find(data.instance.modifiers, function (modifier) {
       return modifier.name === 'applyStyle';
     }).gpuAcceleration;
     if (legacyGpuAccelerationOption !== undefined) {
-      console.warn('WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!');
+      console.warn('WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.adminJs!');
     }
     var gpuAcceleration = legacyGpuAccelerationOption !== undefined ? legacyGpuAccelerationOption : options.gpuAcceleration;
 
@@ -3566,7 +3566,7 @@
 
   /**
    * Modifiers are plugins used to alter the behavior of your poppers.<br />
-   * Popper.js uses a set of 9 modifiers to provide all the basic functionalities
+   * Popper.adminJs uses a set of 9 modifiers to provide all the basic functionalities
    * needed by the library.
    *
    * Usually you don't want to override the `order`, `fn` and `onLoad` props.
@@ -3825,7 +3825,7 @@
      * in case you need to replace `applyStyle` with a custom implementation.
      *
      * This modifier has `850` as `order` value to maintain backward compatibility
-     * with previous versions of Popper.js. Expect the modifiers ordering method
+     * with previous versions of Popper.adminJs. Expect the modifiers ordering method
      * to change in future major versions of the library.
      *
      * @memberof modifiers
@@ -3862,11 +3862,11 @@
      * Applies the computed styles to the popper element.
      *
      * All the DOM manipulations are limited to this modifier. This is useful in case
-     * you want to integrate Popper.js inside a framework or view library and you
+     * you want to integrate Popper.adminJs inside a framework or view library and you
      * want to delegate all the DOM manipulations to it.
      *
      * Note that if you disable this modifier, you must make sure the popper element
-     * has its position set to `absolute` before Popper.js can do its work!
+     * has its position set to `absolute` before Popper.adminJs can do its work!
      *
      * Just disable this modifier and define your own to achieve the desired effect.
      *
@@ -3893,10 +3893,10 @@
   };
 
   /**
-   * The `dataObject` is an object containing all the information used by Popper.js.
+   * The `dataObject` is an object containing all the information used by Popper.adminJs.
    * This object is passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
    * @name dataObject
-   * @property {Object} data.instance The Popper.js instance
+   * @property {Object} data.instance The Popper.adminJs instance
    * @property {String} data.placement Placement applied to popper
    * @property {String} data.originalPlacement Placement originally defined on init
    * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
@@ -3912,8 +3912,8 @@
    */
 
   /**
-   * Default options provided to Popper.js constructor.<br />
-   * These can be overridden using the `options` argument of Popper.js.<br />
+   * Default options provided to Popper.adminJs constructor.<br />
+   * These can be overridden using the `options` argument of Popper.adminJs.<br />
    * To override an option, simply pass an object with the same
    * structure of the `options` object, as the 3rd argument. For example:
    * ```
@@ -3956,7 +3956,7 @@
     /**
      * Callback called when the popper is created.<br />
      * By default, it is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
+     * Access Popper.adminJs instance with `data.instance`.
      * @prop {onCreate}
      */
     onCreate: function onCreate() {},
@@ -3966,14 +3966,14 @@
      * on the initialization/creation of the popper, but only on subsequent
      * updates.<br />
      * By default, it is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
+     * Access Popper.adminJs instance with `data.instance`.
      * @prop {onUpdate}
      */
     onUpdate: function onUpdate() {},
 
     /**
      * List of modifiers used to modify the offsets before they are applied to the popper.
-     * They provide most of the functionalities of Popper.js.
+     * They provide most of the functionalities of Popper.adminJs.
      * @prop {modifiers}
      */
     modifiers: modifiers
@@ -3993,12 +3993,12 @@
   // Methods
   var Popper = function () {
     /**
-     * Creates a new Popper.js instance.
+     * Creates a new Popper.adminJs instance.
      * @class Popper
      * @param {Element|referenceObject} reference - The reference element used to position the popper
      * @param {Element} popper - The HTML / XML element used as the popper
      * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
-     * @return {Object} instance - The generated Popper.js instance
+     * @return {Object} instance - The generated Popper.adminJs instance
      */
     function Popper(reference, popper) {
       var _this = this;
@@ -4044,7 +4044,7 @@
         return a.order - b.order;
       });
 
-      // modifiers have the ability to execute arbitrary code when Popper.js get inited
+      // modifiers have the ability to execute arbitrary code when Popper.adminJs get inited
       // such code is executed in the same order of its modifier
       // they could add new properties to their options configuration
       // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
@@ -4101,7 +4101,7 @@
       /**
        * Collection of utilities useful when writing custom modifiers.
        * Starting from version 1.7, this method is available only if you
-       * include `popper-utils.js` before `popper.js`.
+       * include `popper-utils.adminJs` before `popper.adminJs`.
        *
        * **DEPRECATION**: This way to access PopperUtils is deprecated
        * and will be removed in v2! Use the PopperUtils module directly instead.
@@ -4120,7 +4120,7 @@
   }();
 
   /**
-   * The `referenceObject` is an object that provides an interface compatible with Popper.js
+   * The `referenceObject` is an object that provides an interface compatible with Popper.adminJs
    * and lets you use it as replacement of a real DOM node.<br />
    * You can use this method to position a popper relatively to a set of coordinates
    * in case you don't have a DOM node to use as reference.
@@ -5094,7 +5094,7 @@
       }
     } // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
-    // todo (fat): these should probably be refactored out of modal.js
+    // todo (fat): these should probably be refactored out of modal.adminJs
     // ----------------------------------------------------------------------
     ;
 
@@ -5275,7 +5275,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.6.0): tools/sanitizer.js
+   * Bootstrap (v4.6.0): tools/sanitizer.adminJs
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -6181,7 +6181,7 @@
     };
 
     _proto.setContent = function setContent() {
-      var $tip = $__default['default'](this.getTipElement()); // We use append for html objects to maintain js events
+      var $tip = $__default['default'](this.getTipElement()); // We use append for html objects to maintain adminJs events
 
       this.setElementContent($tip.find(SELECTOR_TITLE), this.getTitle());
 
@@ -7042,4 +7042,4 @@
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=bootstrap.bundle.js.map
+//# sourceMappingURL=bootstrap.bundle.adminJs.map

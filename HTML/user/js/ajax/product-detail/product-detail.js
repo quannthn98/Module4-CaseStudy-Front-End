@@ -1,5 +1,5 @@
-const urlParams = new URLSearchParams(window.location.search);
-const product = urlParams.get('product');
+var urlParamsProductDetail = new URLSearchParams(window.location.search);
+var product = urlParamsProductDetail.get('product');
 getProductDetail(product)
 function getProductDetail(id) {
     $.ajax({

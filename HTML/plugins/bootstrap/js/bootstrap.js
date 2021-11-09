@@ -4,8 +4,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery'), require('popper.js')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery'), require('popper.adminJs')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.adminJs'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.bootstrap = {}, global.jQuery, global.Popper));
 }(this, (function (exports, $, Popper) { 'use strict';
 
@@ -56,7 +56,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.6.0): util.js
+   * Bootstrap (v4.6.0): util.adminJs
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2481,7 +2481,7 @@
       }
     } // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
-    // todo (fat): these should probably be refactored out of modal.js
+    // todo (fat): these should probably be refactored out of modal.adminJs
     // ----------------------------------------------------------------------
     ;
 
@@ -2662,7 +2662,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.6.0): tools/sanitizer.js
+   * Bootstrap (v4.6.0): tools/sanitizer.adminJs
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3568,7 +3568,7 @@
     };
 
     _proto.setContent = function setContent() {
-      var $tip = $__default['default'](this.getTipElement()); // We use append for html objects to maintain js events
+      var $tip = $__default['default'](this.getTipElement()); // We use append for html objects to maintain adminJs events
 
       this.setElementContent($tip.find(SELECTOR_TITLE), this.getTitle());
 
@@ -4429,4 +4429,4 @@
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=bootstrap.js.map
+//# sourceMappingURL=bootstrap.adminJs.map

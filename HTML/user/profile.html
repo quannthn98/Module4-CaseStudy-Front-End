@@ -32,20 +32,40 @@
     <link rel="stylesheet" href="css/utility.css">
     <!-- Main -->
     <link rel="stylesheet" href="css/bundle.css">
-    <!--jquery-->
+
+    <style>
+        label.error {
+            color: red;
+            font-size: small;
+        }
+
+        .error {
+            color: red;
+            font-size: small;
+        }
+
+        #username-duplicated {
+            color: red;
+            font-size: small;
+        }
+
+        #username-useable {
+            color: limegreen;
+            font-size: small;
+        }
+    </style>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script src="js/ajax/pageSetup/pageSetup.js"></script>
-    <script src="js/ajax/cart/cart.js"></script>
-    <script src="js/ajax/user/user.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="js/ajax/home/home.js"></script>
+    <!--validate-->
+
 </head>
 
-<body onload="showCart(), init()">
+<body onload="init()">
 
 <!-- app -->
 <div id="app">
@@ -186,10 +206,10 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a id="mini-cart-trigger">
+                                    <a class="mini-cart-trigger">
                                         <i class="ion ion-md-basket"></i>
-                                        <span id="total-product-in-cart" class="item-counter">0</span>
-                                        <span id="mini-cart-trigger-payment" class="item-price">$0</span>
+                                        <span class="item-counter">4</span>
+                                        <span class="item-price">$220.00</span>
                                     </a>
                                 </li>
                             </ul>
@@ -219,12 +239,43 @@
                     YOUR CART
                     <button type="button" class="button ion ion-md-close" id="mini-cart-close"></button>
                 </div>
-                <ul id="mini-cart-list" class="mini-cart-list">
-
+                <ul class="mini-cart-list">
+                    <li class="clearfix">
+                        <a href="single-product.html">
+                            <img src="images/product/product@1x.jpg" alt="Product">
+                            <span class="mini-item-name">Casual Hoodie Full Cotton</span>
+                            <span class="mini-item-price">$55.00</span>
+                            <span class="mini-item-quantity"> x 1 </span>
+                        </a>
+                    </li>
+                    <li class="clearfix">
+                        <a href="single-product.html">
+                            <img src="images/product/product@1x.jpg" alt="Product">
+                            <span class="mini-item-name">Black Rock Dress with High Jewelery Necklace</span>
+                            <span class="mini-item-price">$55.00</span>
+                            <span class="mini-item-quantity"> x 1 </span>
+                        </a>
+                    </li>
+                    <li class="clearfix">
+                        <a href="single-product.html">
+                            <img src="images/product/product@1x.jpg" alt="Product">
+                            <span class="mini-item-name">Xiaomi Note 2 Black Color</span>
+                            <span class="mini-item-price">$55.00</span>
+                            <span class="mini-item-quantity"> x 1 </span>
+                        </a>
+                    </li>
+                    <li class="clearfix">
+                        <a href="single-product.html">
+                            <img src="images/product/product@1x.jpg" alt="Product">
+                            <span class="mini-item-name">Dell Inspiron 15</span>
+                            <span class="mini-item-price">$55.00</span>
+                            <span class="mini-item-quantity"> x 1 </span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="mini-shop-total clearfix">
                     <span class="mini-total-heading float-left">Total:</span>
-                    <span id="mini-cart-list-payment" class="mini-total-price float-right">$0</span>
+                    <span class="mini-total-price float-right">$220.00</span>
                 </div>
                 <div class="mini-action-anchors">
                     <a href="cart.html" class="cart-anchor">View Cart</a>
@@ -755,13 +806,13 @@
                                             <a href="shop-v2-sub-category.html">Shop</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html" class="u-c-brand">Cart</a>
+                                            <a href="cart.html">Cart</a>
                                         </li>
                                         <li>
                                             <a href="checkout.html">Checkout</a>
                                         </li>
                                         <li>
-                                            <a href="account.html">My Account</a>
+                                            <a href="account.html" class="u-c-brand">My Account</a>
                                         </li>
                                         <li>
                                             <a href="wishlist.html">Wishlist</a>
@@ -774,7 +825,7 @@
                                             <a href="cart-empty.html">Cart Ver 1 Empty</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html" class="u-c-brand">Cart Ver 2 Full</a>
+                                            <a href="cart.html">Cart Ver 2 Full</a>
                                         </li>
                                         <li class="menu-title">Wishlist Variations</li>
                                         <li>
@@ -836,117 +887,119 @@
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
-                <h2>Cart</h2>
+                <h2>Account</h2>
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
                         <a href="home.html">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="cart.html">Cart</a>
+                        <a href="account.html">Account</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
     <!-- Page Introduction Wrapper /- -->
-    <!-- Cart-Page -->
-    <div class="page-cart u-s-p-t-80">
+    <!-- Account-Page -->
+    <div class="page-account u-s-p-t-80">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <form>
-                        <!-- Products-List-Wrapper -->
-                        <div class="table-wrapper u-s-m-b-60">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                                </thead>
-                                <tbody id="cart">
-                                <button type="button" onclick="logout()">log out</button>
-                                <button type="button" onclick="addToCart(1, 1)">add p1</button>
-                                <button type="button" onclick="addToCart(2, 1)">add p2</button>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Products-List-Wrapper /- -->
-                        <!-- Coupon -->
-                        <div class="coupon-continue-checkout u-s-m-b-60">
-                            <div class="coupon-area">
-                                <h6>Enter your coupon code if you have one.</h6>
-                                <div class="coupon-field">
-                                    <label class="sr-only" for="coupon-code">Apply Coupon</label>
-                                    <input id="coupon-code" type="text" class="text-field" placeholder="Coupon Code">
-                                    <button type="submit" class="button">Apply Coupon</button>
-                                </div>
+                <!-- Login -->
+                <div class="col-lg-6">
+                    <div class="login-wrapper">
+                        <h2 class="account-h2 u-s-m-b-20">Change password</h2>
+                        <h6 class="account-h6 u-s-m-b-30"></h6>
+                        <form>
+                            <div class="u-s-m-b-30">
+                                <label for="currentPassword">Current Password
+                                    <span class="astk">*</span>
+                                </label>
+                                <input required type="text" id="currentPassword" name="currentPassword"
+                                       class="text-field" placeholder="current Password">
                             </div>
-                            <div class="button-area">
-                                <a href="shop-v1-root-category.html" class="continue">Continue Shopping</a>
-                                <a href="checkout.html" class="checkout">Proceed to Checkout</a>
+                            <div class="u-s-m-b-30">
+                                <label for="newPassword">New Password
+                                    <span class="astk">*</span>
+                                </label>
+                                <input required type="text" id="newPassword" name="newPassword" class="text-field"
+                                       placeholder="New Password">
                             </div>
-                        </div>
-                        <!-- Coupon /- -->
-                    </form>
-                    <!-- Billing -->
-                    <div class="calculation u-s-m-b-60">
-                        <div class="table-wrapper-2">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th colspan="2">Cart Totals</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
-                                    </td>
-                                    <td>
-                                        <span id="estimatePayment" class="calc-text">$222.00</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h3 class="calc-h3 u-s-m-b-8">Shipping</h3>
-                                        <div class="calc-choice-text u-s-m-b-4">Flat Rate: Not Available</div>
-                                        <div class="calc-choice-text u-s-m-b-4">Free Shipping: Not Available</div>
-
-                                    </td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">Tax</h3>
-                                    </td>
-                                    <td>
-                                        <span class="calc-text">$0.00</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h3 class="calc-h3 u-s-m-b-0">Total</h3>
-                                    </td>
-                                    <td>
-                                        <span id="totalPayment" class="calc-text">$220.00</span>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="u-s-m-b-30">
+                                <label for="re-confirm-password">Email
+                                    <span class="astk">*</span>
+                                </label>
+                                <lable class="confirm-pass-error"></lable>
+                                <input required type="text" id="re-confirm-password" name="re-confirm-password" class="text-field"
+                                       placeholder="Re confirm password">
+                            </div>
+                            <div class="m-b-45">
+                                <button  onclick="changePassword()" type="button" class="button button-outline-secondary w-100">
+                                    Change password
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <!-- Billing /- -->
                 </div>
+                <!-- Login /- -->
+                <!-- Register -->
+                <div class="col-lg-6">
+                    <div class="reg-wrapper">
+                        <h2 class="account-h2 u-s-m-b-20">Register</h2>
+                        <h6 class="account-h6 u-s-m-b-30">Registering for this site allows you to access your order
+                            status and history.</h6>
+                        <form id="register-form" name="register-form">
+                            <div class="u-s-m-b-30">
+                                <label for="email">Email
+                                    <span class="astk">*</span>
+                                </label>
+                                <input required type="text" id="email" name="email" class="text-field"
+                                       placeholder="Email">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="fullName">Full Name
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="fullName" name="fullName" class="text-field"
+                                       placeholder="Full name">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="birthday">BirthDay
+                                </label>
+                                <input type="date" id="birthday" name="birthday" class="text-field"
+                                       placeholder="Birthday">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="age">Age
+                                </label>
+                                <input type="text" id="age" name="age" class="text-field" placeholder="Age">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="address">Address
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="address" name="address" class="text-field" placeholder="Address">
+                            </div>
+                            <div class="u-s-m-b-30">
+                                <label for="phone">Phone number
+                                    <span class="astk">*</span>
+                                </label>
+                                <input type="text" id="phone" name="phone" class="text-field"
+                                       placeholder="Phone number">
+                            </div>
+                            <div id="register-button-wrapper" class="u-s-m-b-45">
+                                <button disabled style="background-color: gray" type="button" id="register-button"
+                                        class="button button-primary w-100">Update
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Register /- -->
             </div>
         </div>
     </div>
-    <!-- Cart-Page /- -->
+    <!-- Account-Page /- -->
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -1163,8 +1216,6 @@
 <script type="text/javascript" src="js/vendor/modernizr-custom.min.js"></script>
 <!-- NProgress -->
 <script type="text/javascript" src="js/nprogress.min.js"></script>
-<!-- jQuery -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
 <!-- Bootstrap JS -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- Popper -->
@@ -1187,5 +1238,14 @@
 <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 <!-- Main -->
 <script type="text/javascript" src="js/app.js"></script>
+
+<script src="js/ajax/pageSetup/pageSetup.js"></script>
+<script src="js/ajax/cart/cart.js"></script>
+<script src="js/ajax/user/user.js"></script>
+<script src="js/ajax/home/home.js"></script>
+<script src="js/ajax/search/search.js"></script>
+
+<script src="js/ajax/user/validation.js"></script>
+<script src="js/ajax/cart/eventListener.js"></script>
 </body>
 </html>

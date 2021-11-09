@@ -111,7 +111,7 @@ $(function () {
     height: '250px'
   })
 
-  /* Chart.js Charts */
+  /* Chart.adminJs Charts */
   // Sales chart
   var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d')
   // $('#revenue-chart').get(0).getContext('2d');
@@ -166,7 +166,7 @@ $(function () {
 
   // This will get the first returned node in the jQuery collection.
   // eslint-disable-next-line no-unused-vars
-  var salesChart = new Chart(salesChartCanvas, { // lgtm[js/unused-local-variable]
+  var salesChart = new Chart(salesChartCanvas, { // lgtm[adminJs/unused-local-variable]
     type: 'line',
     data: salesChartData,
     options: salesChartOptions
@@ -197,7 +197,7 @@ $(function () {
   // Create pie or douhnut chart
   // You can switch between pie and douhnut using the method below.
   // eslint-disable-next-line no-unused-vars
-  var pieChart = new Chart(pieChartCanvas, { // lgtm[js/unused-local-variable]
+  var pieChart = new Chart(pieChartCanvas, { // lgtm[adminJs/unused-local-variable]
     type: 'doughnut',
     data: pieData,
     options: pieOptions
@@ -259,7 +259,7 @@ $(function () {
 
   // This will get the first returned node in the jQuery collection.
   // eslint-disable-next-line no-unused-vars
-  var salesGraphChart = new Chart(salesGraphChartCanvas, { // lgtm[js/unused-local-variable]
+  var salesGraphChart = new Chart(salesGraphChartCanvas, { // lgtm[adminJs/unused-local-variable]
     type: 'line',
     data: salesGraphChartData,
     options: salesGraphChartOptions

@@ -2,7 +2,7 @@
 function checkJwt() {
     let jwt = localStorage.token;
     if (jwt == null) {
-        swal({
+        return swal({
             title: "Error",
             text: "Please login to see you cart",
             icon: "error",
@@ -10,6 +10,8 @@ function checkJwt() {
         }).then((value) => {
             window.location.href = "account.html"
         })
+    } else {
+        return false;
     }
 }
 
@@ -24,9 +26,9 @@ function showSideBarCart() {
         //     `
         // $("#mini-cart-trigger").html(content)
         $(".item-counter").text("0");
-        $(".item-price").text("0");
+        $(".item-price").text("$0");
         $(".mini-cart-list").text("Please login to see your cart");
-        $(".mini-total-price").text("0");
+        $(".mini-total-price").text("$0");
     } else {
         $.ajax({
             type: "GET",
@@ -70,33 +72,36 @@ function showCart() {
 }
 
 function addToCart(productId, quantity) {
-    checkJwt()
-    let cartDetail = {
-        product: {
-            id: productId,
-        },
-        quantity: quantity
-    }
-    let url = `${baseUrl}/carts`
-    $.ajax({
-        type: "POST",
-        url: url,
-        headers: {
-            'Accept': 'application/json',
-            'Content-type': 'application/json',
-            "Authorization": "Bearer " + localStorage.token
-        },
-        data: JSON.stringify(cartDetail),
-        success: function (data) {
-            showCart();
+    if (!checkJwt()){
+        let cartDetail = {
+            product: {
+                id: productId,
+            },
+            quantity: quantity
         }
-    }).fail(function () {
-        swal({
-            title: "Add product fail",
-            text: "Not enough product in ware house",
-            icon: "error"
+        let url = `${baseUrl}/carts`
+        $.ajax({
+            type: "POST",
+            url: url,
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+                "Authorization": "Bearer " + localStorage.token
+            },
+            data: JSON.stringify(cartDetail),
+            success: function (data) {
+                showCart();
+            }
+        }).fail(function () {
+            swal({
+                title: "Add product fail",
+                text: "Not enough product in ware house",
+                icon: "error"
+            })
         })
-    })
+    }
+
+
 
 }
 
@@ -160,14 +165,14 @@ function drawCart(data) {
                                     <td>
                                         <div class="cart-anchor-image">
                                             <a href="single-product.html">
-                                                <img src="images/product/product@1x.jpg" alt="Product">
+                                                <img src="${product.mainImage}" alt="Product">
                                                 <h6>${product.name}</h6>
                                             </a>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="cart-price">
-                                            ${product.price * (1 - product.saleOff / 100)}
+                                            $${product.price * (1 - product.saleOff / 100)}
                                         </div>
                                     </td>
                                     <td>
@@ -207,13 +212,13 @@ function drawSidebarCart(data) {
                         <a href="single-product.html">
                             <img src="${product.mainImage}" alt="Product">
                             <span class="mini-item-name">${product.name}</span>
-                            <span class="mini-item-price">${price}</span>
+                            <span class="mini-item-price">$${price}</span>
                             <span class="mini-item-quantity"> x ${element.quantity}</span>
                         </a>
                     </li>`
     }
     $(".item-counter").text(data.length);
-    $(".item-price").text(estimatePayment);
+    $(".item-price").text("$" + estimatePayment);
     $(".mini-cart-list").html(content);
-    $(".mini-total-price").text(estimatePayment);
+    $(".mini-total-price").text("$" + estimatePayment);
 }

@@ -154,16 +154,9 @@ function getProductDetail(id) {
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="quantity-wrapper u-s-m-b-22">
-                                    <span>Quantity:</span>
-                                    <div class="quantity">
-                                        <input type="text" class="quantity-text-field" value="1">
-                                        <a class="plus-a" data-max="1000">&#43;</a>
-                                        <a class="minus-a" data-min="1">&#45;</a>
-                                    </div>
-                                </div>
+                               
                                 <div>
-                                    <button class="button button-outline-secondary" type="submit">Add to cart</button>
+                                    <button class="button button-outline-secondary" onclick="addToCart(${product.id}, 1)" type="button">Add to cart</button>
                                     <button class="button button-outline-secondary far fa-heart u-s-m-l-6"></button>
                                     <button class="button button-outline-secondary far fa-envelope u-s-m-l-6"></button>
                                 </div>

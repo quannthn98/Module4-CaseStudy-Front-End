@@ -27,6 +27,7 @@ function getCategory(category) {
 getAllItemMenClothing(1)
 function getAllItemMenClothing(id) {
     $.ajax({
+        async: false,
         url:`http://localhost:8080/categories/${id}/products`,
         type: 'GET',
         success:function (product) {
@@ -34,6 +35,7 @@ function getAllItemMenClothing(id) {
             for (let i = 0; i < product.content.length; i++) {
                 ct += showItem(product.content[i])
             }
+            console.log(ct)
             $("#products-slider").html(ct)
         }
     })
@@ -41,6 +43,7 @@ function getAllItemMenClothing(id) {
 getAllItemWomenClothing(2)
 function getAllItemWomenClothing(id) {
     $.ajax({
+        async: false,
         url:`http://localhost:8080/categories/${id}/products`,
         type: 'GET',
         success:function (product) {
@@ -48,6 +51,7 @@ function getAllItemWomenClothing(id) {
             for (let i = 0; i < product.content.length; i++) {
                 ct += showItem(product.content[i])
             }
+            console.log(ct)
             $("#womenClothing").html(ct)
         }
     })

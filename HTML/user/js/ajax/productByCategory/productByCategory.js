@@ -1,9 +1,9 @@
 var  urlParamsCategory = new URLSearchParams(window.location.search);
 var cate = urlParamsCategory.get('cate');
 let currentCate;
-getAllProductByCategory(cate)
-showAllCategories()
-showTitleCategory(cate)
+// getAllProductByCategory(cate)
+// showAllCategories()
+// showTitleCategory(cate)
 function getAllProductByCategory(id, page) {
     currentCate = id
     $.ajax({
@@ -17,7 +17,7 @@ function getAllProductByCategory(id, page) {
                 modal += getModalProduct(product.content[i])
             }
             $(".modal-content").html(modal)
-            $("#productByCategory").html(content)
+            $("#productByCategoryNew").html(content)
         }
     })
 }
@@ -193,7 +193,7 @@ function getModalProduct(product) {
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="button button-outline-secondary" type="submit">Add to cart</button>
+                                            <button class="button button-outline-secondary" onclick="addToCart(${product.id}, 1)" type="submit">Add to cart</button>
                                             <button class="button button-outline-secondary far fa-heart u-s-m-l-6"></button>
                                             <button class="button button-outline-secondary far fa-envelope u-s-m-l-6"></button>
                                         </div>
@@ -219,7 +219,7 @@ function getProduct(product) {
                                         <a class="item-quick-look" data-toggle="modal" href="#quick-view">0Quick Look</a>
                                         <a class="item-mail" href="javascript:void(0)">Mail</a>
                                         <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
-                                        <a class="item-addCart" onclick="addToCart(${product.id}, 1)" href="javascript:void(0)">Add to Cart</a>
+                                        <a class="item-addCart" onclick="addToCart(${product.id}, 1)" >Add to Cart</a>
                                     </div>
                                 </div>
                                 <div class="item-content">

@@ -1,27 +1,41 @@
 let baseUrl = "http://localhost:8080"
 let jwt = localStorage.token
 let username = localStorage.username
+
 // init()
-function init(){
+function getHeaderSetup() {
     checkLoginStatus();
     showSideBarCart();
     getAllCategories();
     $("#btn-search").html('<button id="btn-search" type="submit" class="button button-primary fas fa-search" onclick="window.location.href=\'shop-v6-search-results.html\'">\n')
 }
 
-function checkLoginStatus(){
-    if (jwt != null){
+function checkLoginStatus() {
+    if (jwt != null) {
         isLoggedHandler()
     } else {
         isNotLoggedHandler()
     }
 }
 
-function isLoggedHandler(){
+function isLoggedHandler() {
     let content =
         `<li>
-              <a>Hello ${username}
+              <a>${username}
               </a>
+                        <ul class="g-dropdown" style="width:200px">
+                                <li>
+                                    <a href="order.html">
+                                        <i class="fas fa-cog u-s-m-r-9"></i>
+                                        My Order History</a>
+                                </li>
+                                <li>
+                                    <a href="profile.html">
+                                        <i class="far fa-heart u-s-m-r-9"></i>
+                                        My Profile</a>
+                                </li>
+                                
+                            </ul>
         </li>
         <li>
               <a onclick="logout()">Logout
@@ -39,7 +53,7 @@ function isLoggedHandler(){
     $(".secondary-nav").html(content)
 }
 
-function isNotLoggedHandler(){
+function isNotLoggedHandler() {
     let content =
         `
         <li>

@@ -84,7 +84,8 @@ function register() {
     }).fail(function () {
         swal({
             title: "Register failed",
-            text: "Username"
+            text: "Username has been taken",
+            icon: "error"
         })
     })
 }
@@ -149,4 +150,20 @@ function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
     window.location.href = "home.html"
+}
+
+function showProfile(){
+    let username = $("#username").val();
+    let password = $("#password").val();
+    let email = $("#email").val()
+    let fullName = $("#fullName").val();
+    let birthday = $("#birthday").val();
+    let age = $("#age").val();
+    let address = $("#address").val();
+    let phone = $("#phone").val();
+
+    $.ajax({
+
+    })
+
 }

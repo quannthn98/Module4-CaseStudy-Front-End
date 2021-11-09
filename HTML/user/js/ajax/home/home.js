@@ -1,4 +1,4 @@
-getAllCategories()
+// getAllCategories()
 
 function getAllCategories() {
     $.ajax({
@@ -24,7 +24,7 @@ function getCategory(category) {
                 </a>
                 <button class="v-button ion ion-md-add"></button>`;
 }
-getAllItemMenClothing(1)
+// getAllItemMenClothing(1)
 function getAllItemMenClothing(id) {
     $.ajax({
         async: false,
@@ -40,7 +40,7 @@ function getAllItemMenClothing(id) {
         }
     })
 }
-getAllItemWomenClothing(2)
+// getAllItemWomenClothing(2)
 function getAllItemWomenClothing(id) {
     $.ajax({
         async: false,

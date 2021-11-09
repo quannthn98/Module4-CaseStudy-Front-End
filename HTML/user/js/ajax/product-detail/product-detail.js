@@ -1,6 +1,14 @@
-var urlParamsProductDetail = new URLSearchParams(window.location.search);
-var product = urlParamsProductDetail.get('product');
-getProductDetail(product)
+
+// $(document).ready(function (){
+//     getProductDetail(product)
+// })
+loadProduct()
+function loadProduct(){
+    var urlParamsProductDetail = new URLSearchParams(window.location.search);
+    var product = urlParamsProductDetail.get('product');
+    getProductDetail(product)
+}
+
 function getProductDetail(id) {
     $.ajax({
         url: `http://localhost:8080/products/${id}`,

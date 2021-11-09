@@ -95,7 +95,7 @@ function drawOrderDetail(data){
     for (let i = 0; i < data.length; i++) {
         let element = data[i];
         let product = element.product;
-        totalPayment += product.price * (1 - product.saleOff/100) * product.quantity
+        totalPayment += product.price * (1 - product.saleOff/100) * element.quantity
         content +=
             `<tr>
                 <td>${i+1}</td>
@@ -103,7 +103,7 @@ function drawOrderDetail(data){
                 <td>$${product.price * (1 - product.saleOff/100)}</td>
                 <td>${element.quantity}</td>
                 <td>${product.saleOff}</td>
-                <td>$${product.price * (1 - product.saleOff/100) * product.quantity}</td>
+                <td>$${product.price * (1 - product.saleOff/100) * element.quantity}</td>
             </tr>
           
             `

@@ -7,7 +7,7 @@ function checkJwt() {
             text: "Please login to see you cart",
             icon: "error",
             button: "To login page"
-        }).then((value) => {
+        }).then((valwue) => {
             window.location.href = "account.html"
         })
     } else {

@@ -146,11 +146,7 @@ function checkPassword(password){
     })
 }
 
-function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    window.location.href = "home.html"
-}
+
 
 function showProfile(){
     let username = $("#username").val();

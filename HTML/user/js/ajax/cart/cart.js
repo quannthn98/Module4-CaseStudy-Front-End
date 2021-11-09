@@ -1,19 +1,5 @@
 
-function checkJwt() {
-    let jwt = localStorage.token;
-    if (jwt == null) {
-        return swal({
-            title: "Error",
-            text: "Please login to see you cart",
-            icon: "error",
-            button: "To login page"
-        }).then((valwue) => {
-            window.location.href = "account.html"
-        })
-    } else {
-        return false;
-    }
-}
+
 
 function showSideBarCart() {
     var jwt = localStorage.token;

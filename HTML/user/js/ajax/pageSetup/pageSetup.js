@@ -10,12 +10,34 @@ function getHeaderSetup() {
     $("#btn-search").html('<button id="btn-search" type="submit" class="button button-primary fas fa-search" onclick="window.location.href=\'shop-v6-search-results.html\'">\n')
 }
 
+function checkJwt() {
+    let jwt = localStorage.token;
+    if (jwt == null) {
+        return swal({
+            title: "Error",
+            text: "Please login to see you cart",
+            icon: "error",
+            button: "To login page"
+        }).then((valwue) => {
+            window.location.href = "account.html"
+        })
+    } else {
+        return false;
+    }
+}
+
 function checkLoginStatus() {
     if (jwt != null) {
         isLoggedHandler()
     } else {
         isNotLoggedHandler()
     }
+}
+
+function logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    window.location.href = "home.html"
 }
 
 function isLoggedHandler() {

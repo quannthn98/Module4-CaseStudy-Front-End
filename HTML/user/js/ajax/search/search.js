@@ -1,14 +1,9 @@
-var urlParams = new URLSearchParams(window.location.search);
-var search = urlParams.get('q');
+const urlParams = new URLSearchParams(window.location.search);
+const search = urlParams.get('q');
 $(document).ready(function () {
-    getAll();
+    getAll()
 })
-let totalElement;
-
-// $(document).ready(function (){
-//     $("#btn-search").on('click', window.location.href = 'shop-v6-search-results.html')
-// })
-
+let totalElements;
 function getAll() {
     $.ajax({
         url: `http://localhost:8080/products?q=${search}`,
@@ -19,8 +14,13 @@ function getAll() {
             for (let i = 0; i < product.content.length; i++) {
                 content += getProduct(product.content[i])
             }
-            totalElement = product.totalElements
-            $("#sizeProduct").html('WE FOUND '+ totalElement +' RESULTS FOR : '+'<i id="param"></i>')
+            totalElements = product.totalElements
+            if (search != null){
+                if (totalElements === 0){
+                    window.location.href="shop-v5-product-not-found.html"
+                }
+            }
+            $("#sizeProduct").html('WE FOUND ' + totalElements + ' RESULTS FOR : ' + '<i id="param"></i>')
             $("#param").html(`" ` + search + ` "`)
             $(".list-style").html(content)
         }
@@ -70,7 +70,7 @@ function getProduct(product) {
                                     </div>
                                     <div class="price-template">
                                         <div class="item-new-price">
-                                            ${product.price*(1-product.saleOff/100)}
+                                            $${product.price * (1 - product.saleOff / 100)}
                                         </div>
                                         <div class="item-old-price">
                                             $${product.price}

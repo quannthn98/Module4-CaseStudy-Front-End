@@ -3,8 +3,7 @@ const search = urlParams.get('q');
 $(document).ready(function () {
     getAll()
 })
-let totalSize;
-
+let totalElements;
 function getAll() {
     $.ajax({
         url: `http://localhost:8080/products?q=${search}`,
@@ -15,8 +14,13 @@ function getAll() {
             for (let i = 0; i < product.content.length; i++) {
                 content += getProduct(product.content[i])
             }
-            totalSize = product.totalElements
-            $("#sizeProduct").html('WE FOUND ' + totalSize + ' RESULTS FOR : ' + '<i id="param"></i>')
+            totalElements = product.totalElements
+            if (search != null){
+                if (totalElements === 0){
+                    window.location.href="shop-v5-product-not-found.html"
+                }
+            }
+            $("#sizeProduct").html('WE FOUND ' + totalElements + ' RESULTS FOR : ' + '<i id="param"></i>')
             $("#param").html(`" ` + search + ` "`)
             $(".list-style").html(content)
         }

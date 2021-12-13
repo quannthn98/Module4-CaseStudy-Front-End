@@ -1,4 +1,4 @@
-var  urlParamsCategory = new URLSearchParams(window.location.search);
+var urlParamsCategory = new URLSearchParams(window.location.search);
 var cate = urlParamsCategory.get('cate');
 let currentCate;
 // getAllProductByCategory(cate)
@@ -207,7 +207,8 @@ function getModalProduct(product) {
 }
 
 function getProduct(product) {
-    return `<div class="product-item col-lg-4 col-md-6 col-sm-6">
+    return `
+<div class="product-item col-lg-4 col-md-6 col-sm-6">
                             <div class="item">
                                 <div class="image-container">
                                     <a class="item-img-wrapper-link" href="single-product.html"
@@ -273,7 +274,7 @@ function showAllCategories() {
     $.ajax({
         url: `http://localhost:8080/categories`,
         type: 'GET',
-        success:function (categories) {
+        success: function (categories) {
             let content = ``
             for (let i = 0; i < categories.content.length; i++) {
                 content += getCategorySidebar(categories.content[i]);
@@ -287,12 +288,13 @@ function showTitleCategory(id) {
     $.ajax({
         url: `http://localhost:8080/categories/${id}`,
         type: 'GET',
-        success:function (categories) {
+        success: function (categories) {
             let content = `<h2>${categories.name}</h2>`
             $(".shop-intro").html(content)
         }
     })
 }
+
 function getCategorySidebar(category) {
     return `<li class="fetch-mark-category">
                 <a

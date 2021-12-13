@@ -151,7 +151,7 @@ function drawCart(data) {
                                     <td>
                                         <div class="cart-anchor-image">
                                             <a href="single-product.html">
-                                                <img src="${product.mainImage}" alt="Product">
+                                                <img src="http://localhost:8080/${product.mainImage}" alt="Product">
                                                 <h6>${product.name}</h6>
                                             </a>
                                         </div>
@@ -196,7 +196,7 @@ function drawSidebarCart(data) {
         content +=
                 `    <li class="clearfix">
                         <a href="single-product.html">
-                            <img src="${product.mainImage}" alt="Product">
+                            <img src="http://localhost:8080/${product.mainImage}" alt="Product">
                             <span class="mini-item-name">${product.name}</span>
                             <span class="mini-item-price">$${price}</span>
                             <span class="mini-item-quantity"> x ${element.quantity}</span>

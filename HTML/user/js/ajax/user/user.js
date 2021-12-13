@@ -79,6 +79,7 @@ function register() {
                 text: "Your account had been created, please login to go shopping",
                 icon: "success"
             })
+            loginAfterRegister(username, password)
             console.log(data)
         }
     }).fail(function () {
@@ -87,6 +88,38 @@ function register() {
             text: "Username has been taken",
             icon: "error"
         })
+    })
+}
+
+function loginAfterRegister(username, password){
+    let user = {
+        username: username,
+        password: password
+    }
+    $.ajax({
+        type: "POST",
+        url: `${baseUrl}/login`,
+        data: JSON.stringify(user),
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json'
+        },
+        success: function (data) {
+            console.log(data);
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('password', data.password);
+            console.log(data.roles[0].authority)
+            let authority = data.roles[0].authority
+            let string = JSON.stringify(authority)
+            console.log(string)
+            if (authority == 'ROLE_USER'){
+                window.location.href = "home.html"
+                // window.location.href = "home.html"
+            } else if (authority == 'ROLE_ADMIN'){
+                window.location.href = "admin.html";
+            }
+        }
     })
 }
 

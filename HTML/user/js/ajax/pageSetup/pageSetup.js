@@ -18,8 +18,11 @@ function checkJwt() {
             text: "Please login to see you cart",
             icon: "error",
             button: "To login page"
-        }).then((valwue) => {
-            window.location.href = "account.html"
+        }).then((value) => {
+            if (value){
+                window.location.href = "account.html"
+
+            }
         })
     } else {
         return false;
